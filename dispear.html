@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+  </head>
+  <body>
+       <a-scene>
+            <a-assets>
+                 <img id="360" src="360pic.jpg">
+                 <a-asset-item id="boxmod" src="box.obj"></a-asset-item>
+                 <a-asset-item id="boxmodmtl" src="box.mtl"></a-asset-item>
+            </a-assets>
+
+            <a-sky src="#360" ></a-sky>
+            <a-entity camera look-controls position="0 1.6 0">
+              <a-cursor color="cyan"> </a-cursor>
+            </a-entity>
+
+            <a-mixin id='appear'
+            animation__d="property:visible; from:true; to:false; dur:2000;  startEvents:click";
+            animation__a="property:visible; from:false; to:true; dur:2000;  startEvents:mouseleave";
+
+            ></a-mixin>
+            <a-box position="2 1 -5" color="green"
+              mixin="appear"
+              >
+            </a-box>
+
+
+
+            <a-entity position="0 1 -5"; scale="0.2 0.2 0.2" obj-model="obj: #boxmod; mtl: #boxmodmtl"
+            animation="property: rotation; from: 0; to: 360; loop: true" rotation="33 0 0"
+            scale="0.2 0.2 0.2"></a-entity>
+
+       </a-scene>
+  </body>
+</html>
